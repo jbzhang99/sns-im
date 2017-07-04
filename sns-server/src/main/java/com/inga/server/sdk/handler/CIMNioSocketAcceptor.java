@@ -103,7 +103,9 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 	 * @throws Exception
      */
 	protected void channelRead0(ChannelHandlerContext ctx, SentBody body) throws Exception {
-		System.out.println("channelRead0 this is ===");
+		System.out.println("========================");
+		System.out.println(body.toString());
+		System.out.println("========================");
 		Channel ch = ctx.channel();
 		CIMSession cimSession =new  CIMSession(ch);
 		CIMRequestHandler handler = handlers.get(body.getKey());

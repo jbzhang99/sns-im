@@ -21,18 +21,6 @@
     <mvc:annotation-driven/>
     <!--<context:property-placeholder location="classpath:jdbc.properties"/>-->
 
-    <!-- 1. 真正可以创建 Connection 的 ConnectionFactory，由对应的 JMS 服务厂商提供 -->
-    <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-        <property name="brokerURL" value="tcp://localhost:61616"/>
-    </bean>
-    <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
-        <property name="connectionFactory" ref="targetConnectionFactory"/>
-        <property name="maxConnections" value="10"/>
-    </bean>
-    <bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
-        <property name="targetConnectionFactory" ref="pooledConnectionFactory"/>
-    </bean>
-
 
 
 
