@@ -1,4 +1,4 @@
-package com.test;
+package com.test.client;
 
 
 import com.inga.server.sdk.constant.CIMConstant;
@@ -13,18 +13,18 @@ import java.net.UnknownHostException;
 /**
  * Created by abing on 2017/5/11.
  */
-public class ClientPull {
+public class Client1 {
 
     static Socket socket;
     public static void main(String[] args) throws UnknownHostException, IOException {
 
-        socket = new Socket("localhost",23450);
+        socket = new Socket("127.0.0.1",23450);
         socket.setTcpNoDelay(true);
         sendBindRequest();//发送绑定请求
 
-//        while(true){
-//            receiveMessage();//接受消息
-//        }
+        while(true){
+            receiveMessage();//接受消息
+        }
     }
 
 
@@ -32,13 +32,12 @@ public class ClientPull {
     {
         OutputStream write =  socket.getOutputStream();
         SentBodyProto.Model.Builder builder = SentBodyProto.Model.newBuilder();
-        builder.setKey(CIMConstant.MESSAGE_TYPE.PULL_MSG);
+        builder.setKey(CIMConstant.MESSAGE_TYPE.CLIENT_BIND);
         builder.setTimestamp(System.currentTimeMillis());
-        builder.putData(CIMConstant.CONTENT , "你好10000");
-        builder.putData(CIMConstant.TITLE , "聊天小消息");
-        builder.putData(CIMConstant.RECEIVER , "10000");
-        builder.putData(CIMConstant.ACCOUNT , "10001");
-
+        builder.putData("account", "10001");
+        builder.putData("channel", "java");
+        builder.putData("deviceId", "JVM");
+        builder.putData("device_model", "1.0");
 
         byte[] data = builder.build().toByteArray();
 
@@ -75,6 +74,9 @@ public class ClientPull {
 
     public static void receiveMessage() throws IOException
     {
+
+
+
         byte[] bytes = new byte[1024];
         socket.getInputStream().read(bytes);
         byte type = bytes[0];

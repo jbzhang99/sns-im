@@ -1,4 +1,4 @@
-package com.test;
+package com.test.client;
 
 import org.jboss.netty.channel.ChannelPipelineFactory;
 

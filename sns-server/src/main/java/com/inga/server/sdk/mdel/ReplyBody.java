@@ -139,7 +139,6 @@ public class ReplyBody implements Serializable ,Protobufable{
 	 
 	@Override
 	public byte getType() {
-		// TODO Auto-generated method stub
 		return CIMConstant.ProtobufType.REPLYBODY;
 	}
  

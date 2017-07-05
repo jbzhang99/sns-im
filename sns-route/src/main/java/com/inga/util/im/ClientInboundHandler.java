@@ -3,7 +3,7 @@ package com.inga.util.im;
 import com.inga.server.sdk.constant.CIMConstant;
 import com.inga.server.sdk.mdel.Message;
 import com.inga.server.sdk.mdel.SentBody;
-import com.inga.util.StringUtils;
+import com.inga.server.sdk.util.StringUtils;
 import com.inga.util.buffer.ClientMessageDecoder;
 import com.inga.util.buffer.ClientMessageEncoder;
 import io.netty.bootstrap.Bootstrap;

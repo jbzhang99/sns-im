@@ -103,9 +103,6 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 	 * @throws Exception
      */
 	protected void channelRead0(ChannelHandlerContext ctx, SentBody body) throws Exception {
-		System.out.println("========================");
-		System.out.println(body.toString());
-		System.out.println("========================");
 		Channel ch = ctx.channel();
 		CIMSession cimSession =new  CIMSession(ch);
 		CIMRequestHandler handler = handlers.get(body.getKey());
@@ -169,7 +166,7 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 	}
 
 	/**
-	 * 异常报错
+	 *  不进行异常的抛出,一处channel对象
 	 *	因为使用了分布式的调用，客户端主动去建立socket连接，主动去断开socket连接.(防止一台机器建立过多的tcp连接，防止达到系统上限)
 	 * 	//TODO 	客户端主动断开连接的时候会到这里面运行	(特殊的把错误抛出进行了日志的打印，后续测试继续观察)
 	 *
