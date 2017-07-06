@@ -1,4 +1,4 @@
-package com.inga.server.sdk.util;
+package com.inga.util;
 
 /**
  * String 公共类

@@ -1,8 +1,8 @@
 
-package com.inga.server.sdk.mdel;
+package com.inga.model;
 
-import com.inga.server.sdk.constant.CIMConstant;
-import com.inga.server.sdk.mdel.proto.ReplyBodyProto;
+import com.inga.constant.CIMConstant;
+import com.inga.model.proto.ReplyBodyProto;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -121,7 +121,7 @@ public class ReplyBody implements Serializable ,Protobufable{
 		
 		return buffer.toString();
 	}
-	@Override
+//	@Override
 	public byte[] getByteArray() {
 		ReplyBodyProto.Model.Builder builder = ReplyBodyProto.Model.newBuilder();
 		builder.setCode(code);
@@ -137,7 +137,7 @@ public class ReplyBody implements Serializable ,Protobufable{
 		return builder.build().toByteArray();
 	}
 	 
-	@Override
+//	@Override
 	public byte getType() {
 		return CIMConstant.ProtobufType.REPLYBODY;
 	}

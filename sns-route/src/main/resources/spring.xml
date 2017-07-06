@@ -15,13 +15,24 @@
 		http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
-    <import resource="mq.xml"/>
     <context:annotation-config />
     <context:component-scan base-package="com.inga"/>
-    <mvc:annotation-driven/>
-    <!--<context:property-placeholder location="classpath:jdbc.properties"/>-->
+    <mvc:default-servlet-handler />
+    <mvc:annotation-driven />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          id="internalResourceViewResolver">
+        <!-- 前缀 -->
+        <property name="prefix" value="/" />
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp" />
+    </bean>
 
 
+
+   <!-- <bean id="clientHandler" class="com.inga.util.im.ClientInboundHandler" init-method="init">
+        <property name="host" value="127.0.0.1"/>
+        <property name="port" value="23450"/>
+    </bean>-->
 
 
 </beans>

@@ -1,7 +1,7 @@
 package com.inga.server.sdk;
 
 
-import com.inga.server.sdk.constant.CIMConstant;
+import com.inga.constant.CIMConstant;
 import com.inga.server.sdk.handler.CIMNioSocketAcceptor;
 import com.inga.server.sdk.handler.CIMRequestHandler;
 import com.inga.server.sdk.handler.request.BindHandler;
@@ -20,8 +20,6 @@ public class Server {
         acceptor.setPort(23450);
 
         HashMap<String , CIMRequestHandler> map = new HashMap<String, CIMRequestHandler>();
-
-
 
         map.put(CIMConstant.MESSAGE_TYPE.CLIENT_BIND , new BindHandler());
         map.put(CIMConstant.MESSAGE_TYPE.PULL_MSG , new PullMessageHandler());

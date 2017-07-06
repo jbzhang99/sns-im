@@ -1,14 +1,19 @@
-package com.inga.util;
+package com.inga.util.mq;
 
+/*
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+*/
 
 /**
  * Created by abing on 2017/6/28.
  */
-public class TestComsumer implements MessageListener {
+public class TestComsumer{
+
+}
+/*public class TestComsumer implements MessageListener {
 
     public void onMessage(Message message) {
 
@@ -22,4 +27,4 @@ public class TestComsumer implements MessageListener {
             }
         }
     }
-}
+}*/

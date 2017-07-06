@@ -1,7 +1,7 @@
 package com.inga.server.sdk.handler;
 
-import com.inga.server.sdk.mdel.ReplyBody;
-import com.inga.server.sdk.mdel.SentBody;
+import com.inga.model.ReplyBody;
+import com.inga.model.SentBody;
 import com.inga.server.sdk.session.CIMSession;
 
 /**

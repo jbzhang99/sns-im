@@ -2,7 +2,7 @@
 package com.inga.server.sdk.session;
 
 
-import com.inga.server.sdk.constant.CIMConstant;
+import com.inga.constant.CIMConstant;
 
 import java.util.ArrayList;
 import java.util.HashMap;

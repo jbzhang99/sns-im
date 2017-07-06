@@ -1,7 +1,7 @@
 package com.inga.server.sdk.session;
 
 
-import com.inga.server.sdk.constant.CIMConstant;
+import com.inga.constant.CIMConstant;
 import com.inga.server.sdk.util.SNSJedisUtil;
 
 import java.util.List;
@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * session管理
+ *  使用redis存储用户的session对象,具体的channel保存在netty中,分布式的时候,
+ *  使用account查找用户具体在那一台机器上面,然后具体在那一套机器上面进行具体的消息推送
  *
  * Created by abing on 2017/5/19.
  */

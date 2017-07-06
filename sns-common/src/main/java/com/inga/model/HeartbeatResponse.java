@@ -1,9 +1,9 @@
 
-package com.inga.server.sdk.mdel;
+package com.inga.model;
 
 
 
-import com.inga.server.sdk.constant.CIMConstant;
+import com.inga.constant.CIMConstant;
 
 import java.io.Serializable;
 
@@ -25,7 +25,7 @@ public class HeartbeatResponse implements Serializable, Protobufable {
 		return object;
 	}
 
-	@Override
+//	@Override
 	public byte[] getByteArray() {
 		return CMD_HEARTBEAT_RESPONSE.getBytes();
 	}
@@ -34,7 +34,7 @@ public class HeartbeatResponse implements Serializable, Protobufable {
 		return TAG;
 	}
 
-	@Override
+//	@Override
 	public byte getType() {
 		return CIMConstant.ProtobufType.C_H_RS;
 	}

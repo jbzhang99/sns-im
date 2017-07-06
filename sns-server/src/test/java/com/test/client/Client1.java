@@ -1,9 +1,9 @@
 package com.test.client;
 
 
-import com.inga.server.sdk.constant.CIMConstant;
-import com.inga.server.sdk.mdel.proto.ReplyBodyProto;
-import com.inga.server.sdk.mdel.proto.SentBodyProto;
+import com.inga.constant.CIMConstant;
+import com.inga.model.proto.ReplyBodyProto;
+import com.inga.model.proto.SentBodyProto;
 
 import java.io.IOException;
 import java.io.OutputStream;

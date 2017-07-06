@@ -1,7 +1,7 @@
 
 package com.inga.server.sdk.session;
 
-import com.inga.server.sdk.constant.CIMConstant;
+import com.inga.constant.CIMConstant;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;
 import io.netty.util.AttributeKey;

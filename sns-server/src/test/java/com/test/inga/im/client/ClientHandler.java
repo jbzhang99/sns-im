@@ -1,6 +1,5 @@
 package com.test.inga.im.client;
 
-import com.inga.server.sdk.util.StringUtils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -8,6 +7,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import org.springframework.util.StringUtils;
 
 /**
  * Created by abing on 2017/7/4.

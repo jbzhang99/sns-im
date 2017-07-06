@@ -1,9 +1,9 @@
 package com.inga.server.sdk.filter;
 
-import com.inga.server.sdk.constant.CIMConstant;
-import com.inga.server.sdk.mdel.HeartbeatResponse;
-import com.inga.server.sdk.mdel.SentBody;
-import com.inga.server.sdk.mdel.proto.SentBodyProto;
+import com.inga.constant.CIMConstant;
+import com.inga.model.HeartbeatResponse;
+import com.inga.model.SentBody;
+import com.inga.model.proto.SentBodyProto;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

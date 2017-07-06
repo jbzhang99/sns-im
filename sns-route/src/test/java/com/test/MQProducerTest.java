@@ -1,10 +1,10 @@
 package com.test;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
+/*import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.pool.PooledConnectionFactory;
 import org.springframework.jms.connection.SingleConnectionFactory;
-import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.JmsTemplate;*/
 
 import java.util.Random;
 
@@ -12,7 +12,7 @@ import java.util.Random;
  * Created by abing on 2017/7/1.
  */
 public class MQProducerTest {
-    public static final String brokrnURL = "tcp://localhost:61616";
+    /*public static final String brokrnURL = "tcp://localhost:61616";
     public static void main(String[] args) throws InterruptedException {
 
         ActiveMQConnectionFactory targetConnectFactpry = new ActiveMQConnectionFactory(brokrnURL);
@@ -35,10 +35,6 @@ public class MQProducerTest {
 
             Thread.sleep(1000);
         }
-
-
-
-
-    }
+    }*/
 }
 

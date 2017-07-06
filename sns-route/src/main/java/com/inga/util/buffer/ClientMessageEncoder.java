@@ -2,8 +2,8 @@
 package com.inga.util.buffer;
 
 
-import com.inga.server.sdk.constant.CIMConstant;
-import com.inga.server.sdk.mdel.Protobufable;
+import com.inga.constant.CIMConstant;
+import com.inga.model.Protobufable;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;

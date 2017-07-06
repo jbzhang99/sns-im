@@ -17,7 +17,7 @@
 
 
     <!-- 1. 真正可以创建 Connection 的 ConnectionFactory，由对应的 JMS 服务厂商提供 -->
-    <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+    <!--<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
         <property name="brokerURL" value="tcp://localhost:61616"/>
     </bean>
     <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
@@ -29,14 +29,14 @@
     </bean>
 
 
-    <!-- 2. 消息的消费者 -->
-    <bean id="messageConsumer" class="com.inga.util.TestComsumer"/>
+    &lt;!&ndash; 2. 消息的消费者 &ndash;&gt;
+    <bean id="messageConsumer" class="com.inga.util.mq.TestComsumer"/>
 
     <bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory"/>
         <property name="messageListener" ref="messageConsumer"/>
-        <property name="destinationName" value="testQueue1"/> <!--队列名字-->
-    </bean>
+        <property name="destinationName" value="testQueue1"/> &lt;!&ndash;队列名字&ndash;&gt;
+    </bean>-->
 
 
 

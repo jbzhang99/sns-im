@@ -19,7 +19,7 @@
  *                                                                                     *
  ***************************************************************************************
  */
-package com.inga.server.sdk.constant;
+package com.inga.constant;
 
 
 /**
@@ -104,5 +104,11 @@ public   interface  CIMConstant  {
 		//被系统禁用消息
 		String ACTION_444 ="444";
     }
+
+	public static interface RedisKey{
+
+		String IM_SERVER_INFO = "imServerInfo";
+
+	}
    
 }

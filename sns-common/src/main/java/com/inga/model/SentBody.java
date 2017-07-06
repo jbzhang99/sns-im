@@ -1,8 +1,8 @@
 
-package com.inga.server.sdk.mdel;
+package com.inga.model;
 
-import com.inga.server.sdk.constant.CIMConstant;
-import com.inga.server.sdk.mdel.proto.SentBodyProto;
+import com.inga.constant.CIMConstant;
+import com.inga.model.proto.SentBodyProto;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -87,7 +87,7 @@ public class SentBody implements Serializable,Protobufable {
 		return buffer.toString();
 	}
 
-	@Override
+//	@Override
 	public byte[] getByteArray() {
 		SentBodyProto.Model.Builder builder = SentBodyProto.Model.newBuilder();
 		builder.setKey(key);
@@ -98,7 +98,7 @@ public class SentBody implements Serializable,Protobufable {
 		return builder.build().toByteArray();
 	}
 
-	@Override
+//	@Override
 	public byte getType() {
 		return CIMConstant.ProtobufType.SENTBODY;
 	}

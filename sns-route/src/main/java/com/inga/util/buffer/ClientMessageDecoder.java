@@ -2,12 +2,12 @@
 package com.inga.util.buffer;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.inga.server.sdk.constant.CIMConstant;
-import com.inga.server.sdk.mdel.HeartbeatRequest;
-import com.inga.server.sdk.mdel.Message;
-import com.inga.server.sdk.mdel.ReplyBody;
-import com.inga.server.sdk.mdel.proto.MessageProto;
-import com.inga.server.sdk.mdel.proto.ReplyBodyProto;
+import com.inga.constant.CIMConstant;
+import com.inga.model.HeartbeatRequest;
+import com.inga.model.Message;
+import com.inga.model.ReplyBody;
+import com.inga.model.proto.MessageProto;
+import com.inga.model.proto.ReplyBodyProto;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

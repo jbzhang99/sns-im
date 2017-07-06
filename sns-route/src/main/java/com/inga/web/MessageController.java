@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/im/message")
 public class MessageController {
 
-    @RequestMapping("/sendMsg")
+    @RequestMapping(value = "/sendMsg" )
     @ResponseBody
     public String sendMsg(String id , String name){
 

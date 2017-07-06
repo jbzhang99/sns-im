@@ -1,5 +1,5 @@
 
-package com.inga.server.sdk.mdel;
+package com.inga.model;
 /**
  * 需要向另一端发送的结构体
  */

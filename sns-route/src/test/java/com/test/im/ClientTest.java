@@ -1,8 +1,6 @@
 package com.test.im;
 
-import com.inga.server.sdk.constant.CIMConstant;
-import com.inga.server.sdk.mdel.Message;
-import com.inga.server.sdk.mdel.SentBody;
+import com.inga.model.Message;
 import com.inga.util.im.ClientInboundHandler;
 
 import java.util.Random;
@@ -14,8 +12,9 @@ public class ClientTest {
 
     public static void main(String[] args) {
         ClientInboundHandler handler = new ClientInboundHandler();
-        handler.init("127.0.0.1" , 23450);
-
+        handler.setHost("127.0.0.1");
+        handler.setPort(23450);
+        handler.init();
 
         while (true){
             Message message = new Message();

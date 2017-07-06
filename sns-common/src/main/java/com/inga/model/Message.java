@@ -1,8 +1,8 @@
 
-package com.inga.server.sdk.mdel;
+package com.inga.model;
 
-import com.inga.server.sdk.constant.CIMConstant;
-import com.inga.server.sdk.mdel.proto.MessageProto;
+import com.inga.constant.CIMConstant;
+import com.inga.model.proto.MessageProto;
 
 import java.io.Serializable;
 
@@ -182,7 +182,7 @@ public class Message implements Serializable,Protobufable {
 	public boolean isNotEmpty(String txt) {
 		return txt != null && txt.trim().length()!=0;
 	}
-	@Override
+//	@Override
 	public byte[] getByteArray() {
 		MessageProto.Model.Builder builder = MessageProto.Model.newBuilder();
 		builder.setMid(mid);
@@ -208,7 +208,7 @@ public class Message implements Serializable,Protobufable {
 		}
 		return builder.build().toByteArray();
 	}
-	@Override
+//	@Override
 	public byte getType() {
 		return CIMConstant.ProtobufType.MESSAGE;
 	}

@@ -1,11 +1,11 @@
 package com.inga.server.sdk.handler;
 
-import com.inga.server.sdk.constant.CIMConstant;
+import com.inga.constant.CIMConstant;
 import com.inga.server.sdk.filter.ServerMessageDecoder;
 import com.inga.server.sdk.filter.ServerMessageEncoder;
-import com.inga.server.sdk.mdel.HeartbeatRequest;
-import com.inga.server.sdk.mdel.ReplyBody;
-import com.inga.server.sdk.mdel.SentBody;
+import com.inga.model.HeartbeatRequest;
+import com.inga.model.ReplyBody;
+import com.inga.model.SentBody;
 import com.inga.server.sdk.session.CIMSession;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -69,7 +69,7 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
                  }
        });
        bootstrap.bind(port);
-    }
+	}
 
 
 	/**

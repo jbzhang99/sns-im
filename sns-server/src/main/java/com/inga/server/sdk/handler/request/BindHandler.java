@@ -1,10 +1,10 @@
 package com.inga.server.sdk.handler.request;
 
 
-import com.inga.server.sdk.constant.CIMConstant;
+import com.inga.constant.CIMConstant;
 import com.inga.server.sdk.handler.CIMRequestHandler;
-import com.inga.server.sdk.mdel.ReplyBody;
-import com.inga.server.sdk.mdel.SentBody;
+import com.inga.model.ReplyBody;
+import com.inga.model.SentBody;
 import com.inga.server.sdk.session.CIMSession;
 import com.inga.server.sdk.session.JedisSessionManager;
 import com.inga.server.sdk.session.SessionManager;
