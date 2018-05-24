@@ -1,5 +1,5 @@
 syntax = "proto3";
-package com.w2cx.spi.sns.proto;
+package com.inga.model.proto;
 option java_outer_classname="ReplyBodyProto";
 
 message Model {

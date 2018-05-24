@@ -1,7 +1,10 @@
 package com.test.inga.im.client;
 
 /**
- * Created by abing on 2017/7/4.
+ *
+ * Date  2018/1/15
+ * Time  上午10:21
+ * Author bingbing.wang@corp.elong.com
  */
 public class TestClientHandler {
 

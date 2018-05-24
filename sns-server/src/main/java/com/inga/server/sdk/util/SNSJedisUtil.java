@@ -6,8 +6,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * redis缓存工具类
- * 
- * @author jt
+ *
  *
  */
 public class SNSJedisUtil {

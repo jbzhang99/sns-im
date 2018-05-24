@@ -11,7 +11,10 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
- * Created by abing on 2017/5/11.
+ *
+ * Date  2018/1/15
+ * Time  上午10:34
+ * Author bingbing.wang@corp.elong.com
  */
 public class Client1 {
 

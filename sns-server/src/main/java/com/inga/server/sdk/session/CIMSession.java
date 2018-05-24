@@ -65,8 +65,6 @@ public class CIMSession  implements Serializable{
 
 		System.out.println(" ==  ip host : " + session.remoteAddress().toString() + "  ==  ");
 
-//		host = CIMConstant.IM_SERVER_HOST;
-//		port = CIMConstant.IM_SERVER_PORT;
 		setAttribute("host", host);
 	}
  

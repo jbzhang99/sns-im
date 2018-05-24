@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /** 
  * 自带默认 session管理实现， 各位可以自行实现 AbstractSessionManager接口来实现自己的 session管理
- *服务器集群时 须要将CIMSession 信息存入数据库或者nosql 等 第三方存储空间中，便于所有服务器都可以访问
+ * 服务器集群时 须要将CIMSession 信息存入数据库或者nosql 等 第三方存储空间中，便于所有服务器都可以访问
  */
 public class DefaultSessionManager implements SessionManager{
 

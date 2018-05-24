@@ -11,7 +11,10 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
- * Created by abing on 2017/5/11.
+ *
+ * Date  2018/1/15
+ * Time  上午10:20
+ * Author bingbing.wang@corp.elong.com
  */
 public class ClientPull {
 
@@ -22,9 +25,7 @@ public class ClientPull {
         socket.setTcpNoDelay(true);
         sendBindRequest();//发送绑定请求
 
-//        while(true){
-//            receiveMessage();//接受消息
-//        }
+
     }
 
 

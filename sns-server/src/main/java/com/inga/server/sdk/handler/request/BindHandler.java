@@ -6,16 +6,19 @@ import com.inga.server.sdk.handler.CIMRequestHandler;
 import com.inga.model.ReplyBody;
 import com.inga.model.SentBody;
 import com.inga.server.sdk.session.CIMSession;
+import com.inga.server.sdk.session.DefaultSessionManager;
 import com.inga.server.sdk.session.JedisSessionManager;
 import com.inga.server.sdk.session.SessionManager;
 
 /**
- * 绑定客户端到内存中
- * Created by abing on 2017/5/17.
+ *
+ * Date  2018/1/15
+ * Time  上午10:17
+ * Author bingbing.wang@corp.elong.com
  */
 public class BindHandler implements CIMRequestHandler {
 
-    private SessionManager sessionManager = JedisSessionManager.getInstance();
+    private SessionManager sessionManager = new DefaultSessionManager();
     @Override
     public ReplyBody process(CIMSession session, SentBody message) {
         ReplyBody replyBody = new ReplyBody();

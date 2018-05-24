@@ -7,6 +7,8 @@ import com.inga.model.HeartbeatRequest;
 import com.inga.model.ReplyBody;
 import com.inga.model.SentBody;
 import com.inga.server.sdk.session.CIMSession;
+import com.inga.server.sdk.session.DefaultSessionManager;
+import com.inga.server.sdk.session.SessionManager;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.ChannelHandler.Sharable;
@@ -27,32 +29,35 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * netty 信息请求的主方法
- *
- * Created by abing on 2017/5/26.
+ * Date  2018/1/15
+ * Time  上午10:18
+ * Author bingbing.wang@corp.elong.com
  */
 @Sharable
 public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> {
 	
 	private final static String CIMSESSION_CLOSED_HANDLER_KEY = "client_cimsession_closed";
-	private Logger logger = LoggerFactory.getLogger(CIMNioSocketAcceptor.class);
 	//绑定请求类型信息
 	public static Map<String, CIMRequestHandler> handlers = new HashMap<String, CIMRequestHandler>();
 	private int port;
 
+	private SessionManager sessionManager = new DefaultSessionManager();
+
 	//保存channel的缓存信息
 	public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
-    //连接空闲时间
-  	public static final int READ_IDLE_TIME = 120;//秒
-  	
-  	//连接空闲时间
-  	public static final int WRITE_IDLE_TIME = 120;//秒
-  	
+
   	public static final int PING_TIME_OUT = 30;//心跳响应 超时为30秒
-  	
+
+	/**
+	 * 初始化
+	 * @throws IOException
+	 */
     public void bind() throws IOException{
+
     	ServerBootstrap bootstrap = new ServerBootstrap();
 		bootstrap.group(new NioEventLoopGroup(), new NioEventLoopGroup());
 		bootstrap.childOption(ChannelOption.TCP_NODELAY, true);
@@ -64,7 +69,8 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
                  public void initChannel(SocketChannel ch) throws Exception {
                 	 ch.pipeline().addLast(new ServerMessageDecoder());
                 	 ch.pipeline().addLast(new ServerMessageEncoder());
-                	 ch.pipeline().addLast(new IdleStateHandler(60,40,35));
+                	 //心跳探测
+//                	 ch.pipeline().addLast(new IdleStateHandler(5,5,5));
                 	 ch.pipeline().addLast(CIMNioSocketAcceptor.this);
                  }
        });
@@ -80,6 +86,8 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 	@Override
 	public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
 		channels.add(ctx.channel());
+		CIMSession cimSession =new  CIMSession(ctx.channel());
+		sessionManager.remove(cimSession.getAccount());
 	}
 
 	/**
@@ -92,12 +100,17 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 		channels.remove(ctx.channel());
 	}
 
+	/**
+	 * netty连接的建立
+	 * @param ctx
+	 */
 	public void channelRegistered(ChannelHandlerContext ctx) {
-		logger.info("sessionCreated()... from "+ctx.channel().remoteAddress()+" nid:" + ctx.channel().id().asShortText());
+		System.out.println("sessionCreated()... from "+ctx.channel().remoteAddress()+" nid:" + ctx.channel().id().asShortText());
 	}
 
 	/**
 	 * 读取客户段发送过来的消息
+	 *
 	 * @param ctx
 	 * @param body
 	 * @throws Exception
@@ -123,23 +136,27 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 
 
 	/**
-	 *
+	 * netty连接的删除
 	 * @param ctx
 	 * @throws Exception
      */
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
 		CIMSession cimSession =new  CIMSession(ctx.channel());
-		logger.warn("sessionClosed()... from "+ctx.channel().remoteAddress()+" nid:"+cimSession.getNid() +",isConnected:"+ctx.channel().isActive());
+		System.out.println("sessionClosed()... from "+ctx.channel().remoteAddress()+" nid:"+cimSession.getNid() +",isConnected:"+ctx.channel().isActive());
 		CIMRequestHandler handler = handlers.get(CIMSESSION_CLOSED_HANDLER_KEY);
 		if(handler!=null){
 			handler.process(cimSession, null);
+		}else {
+			System.out.println("删除cimsession等");
+			sessionManager.remove(cimSession.getAccount());
 		}
 
 	}
 
 	/**
+	 *
 	 * 心跳探测使用
-	 * 	//TODO 还没有进行测试调用，后续开发
+	 *
 	 * @param ctx
 	 * @param evt
 	 * @throws Exception
@@ -148,13 +165,13 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 		if (evt instanceof IdleStateEvent && ((IdleStateEvent) evt).state().equals(IdleState.WRITER_IDLE)) {
 			ctx.channel().attr(AttributeKey.valueOf(CIMConstant.HEARTBEAT_KEY)).set(System.currentTimeMillis());
 			ctx.channel().writeAndFlush(HeartbeatRequest.getInstance());
-			logger.debug(IdleState.WRITER_IDLE +"... from "+ctx.channel().remoteAddress()+" nid:" +ctx.channel().id().asShortText());
+			System.out.println(IdleState.WRITER_IDLE +"... from "+ctx.channel().remoteAddress()+" nid:" +ctx.channel().id().asShortText());
 	    }
 
 	    //如果心跳请求发出30秒内没收到响应，则关闭连接
 	    if (evt instanceof IdleStateEvent && ((IdleStateEvent) evt).state().equals(IdleState.READER_IDLE)){
-	    	
-			logger.debug(IdleState.READER_IDLE +"... from "+ctx.channel().remoteAddress()+" nid:" +ctx.channel().id().asShortText());
+
+			System.out.println(IdleState.READER_IDLE +"... from "+ctx.channel().remoteAddress()+" nid:" +ctx.channel().id().asShortText());
 	    	Long lastTime = (Long) ctx.channel().attr(AttributeKey.valueOf(CIMConstant.HEARTBEAT_KEY)).get();
 	     	if(lastTime != null && System.currentTimeMillis() - lastTime >= PING_TIME_OUT){
 	     		ctx.channel().close();
@@ -174,7 +191,7 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 	 * @param cause
      */
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause){
-		logger.info(" 客户端链接断开 "+ctx.channel().remoteAddress()+" isConnected:"+ctx.channel().isActive()+" nid:" +ctx.channel().id().asShortText());
+		System.out.println(" 客户端链接断开 "+ctx.channel().remoteAddress()+" isConnected:"+ctx.channel().isActive()+" nid:" +ctx.channel().id().asShortText());
 		ctx.channel().close();
 		channels.remove(ctx.channel());
 

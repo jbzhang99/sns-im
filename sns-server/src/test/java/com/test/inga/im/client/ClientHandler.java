@@ -10,7 +10,10 @@ import io.netty.handler.codec.string.StringEncoder;
 import org.springframework.util.StringUtils;
 
 /**
- * Created by abing on 2017/7/4.
+ *
+ * Date  2018/1/15
+ * Time  上午10:15
+ * Author bingbing.wang@corp.elong.com
  */
 public class ClientHandler extends SimpleChannelInboundHandler<Object> {
 

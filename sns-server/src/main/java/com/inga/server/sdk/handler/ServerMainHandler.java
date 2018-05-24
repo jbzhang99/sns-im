@@ -12,8 +12,9 @@ import java.util.List;
 
 /**
  * im服务端的启动
- *
- * Created by abing on 2017/7/5.
+ * Date  2018/1/15
+ * Time  上午10:19
+ * Author bingbing.wang@corp.elong.com
  */
 public class ServerMainHandler {
 

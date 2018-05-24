@@ -1,8 +1,10 @@
 package com.inga.util;
 
 /**
- * String 公共类
- * Created by abing on 2017/6/19.
+ *
+ * Date  2018/1/15
+ * Time  上午10:17
+ * Author bingbing.wang@corp.elong.com
  */
 public class StringUtils {
 

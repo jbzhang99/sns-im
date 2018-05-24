@@ -14,7 +14,10 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.IdleStateHandler;
 
 /**
- * Created by abing on 2017/7/4.
+ *
+ * Date  2018/1/15
+ * Time  上午10:18
+ * Author bingbing.wang@corp.elong.com
  */
 public class ClientInboundHandler extends SimpleChannelInboundHandler<Object> {
 

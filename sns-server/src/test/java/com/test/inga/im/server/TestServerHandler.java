@@ -1,7 +1,10 @@
 package com.test.inga.im.server;
 
 /**
- * Created by abing on 2017/7/4.
+ *
+ * Date  2018/1/15
+ * Time  上午10:34
+ * Author bingbing.wang@corp.elong.com
  */
 public class TestServerHandler {
 

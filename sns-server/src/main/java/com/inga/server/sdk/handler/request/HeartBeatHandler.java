@@ -9,7 +9,10 @@ import com.inga.model.SentBody;
 import com.inga.server.sdk.session.CIMSession;
 
 /**
- * Created by abing on 2017/5/31.
+ *
+ * Date  2018/1/15
+ * Time  上午10:18
+ * Author bingbing.wang@corp.elong.com
  */
 public class HeartBeatHandler implements CIMRequestHandler {
 
