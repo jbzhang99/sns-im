@@ -17,7 +17,6 @@ import io.netty.handler.timeout.IdleStateHandler;
  *
  * Date  2018/1/15
  * Time  上午10:18
- * Author bingbing.wang@corp.elong.com
  */
 public class ClientInboundHandler extends SimpleChannelInboundHandler<Object> {
 

@@ -12,7 +12,6 @@ import io.netty.handler.codec.string.StringEncoder;
  *
  * Date  2018/1/15
  * Time  上午10:34
- * Author bingbing.wang@corp.elong.com
  */
 public class ServerHandler extends SimpleChannelInboundHandler<Object> {
 

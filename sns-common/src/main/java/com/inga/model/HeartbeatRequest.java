@@ -25,7 +25,7 @@ public class HeartbeatRequest implements Serializable,Protobufable {
 		return object;
 	}
 	
-//	@Override
+	@Override
 	public byte[] getByteArray() {
 		return CMD_HEARTBEAT_RESPONSE.getBytes();
 	}

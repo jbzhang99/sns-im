@@ -14,7 +14,6 @@ import com.inga.server.sdk.session.SessionManager;
  *
  * Date  2018/1/15
  * Time  上午10:17
- * Author bingbing.wang@corp.elong.com
  */
 public class BindHandler implements CIMRequestHandler {
 

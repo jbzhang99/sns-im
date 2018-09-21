@@ -4,7 +4,6 @@ package com.test.inga.im.server;
  *
  * Date  2018/1/15
  * Time  上午10:34
- * Author bingbing.wang@corp.elong.com
  */
 public class TestServerHandler {
 

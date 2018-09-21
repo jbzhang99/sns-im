@@ -12,7 +12,6 @@ import java.util.Set;
  *
  * Date  2018/1/15
  * Time  上午10:21
- * Author bingbing.wang@corp.elong.com
  */
 public class SerializeUtil {
 

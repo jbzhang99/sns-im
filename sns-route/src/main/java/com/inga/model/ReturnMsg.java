@@ -6,7 +6,6 @@ import java.io.Serializable;
  *
  * Date  2018/1/15
  * Time  上午10:17
- * Author bingbing.wang@corp.elong.com
  */
 public class ReturnMsg<T> implements Serializable {
 

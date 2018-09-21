@@ -34,19 +34,23 @@ import java.util.Map;
  * netty 信息请求的主方法
  * Date  2018/1/15
  * Time  上午10:18
- * Author bingbing.wang@corp.elong.com
  */
 @Sharable
 public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> {
 	
 	private final static String CIMSESSION_CLOSED_HANDLER_KEY = "client_cimsession_closed";
-	//绑定请求类型信息
+	/**
+	 * 绑定请求类型信息
+	 */
 	public static Map<String, CIMRequestHandler> handlers = new HashMap<String, CIMRequestHandler>();
+
 	private int port;
 
 	private SessionManager sessionManager = new DefaultSessionManager();
 
-	//保存channel的缓存信息
+	/**
+	 * 保存channel的缓存信息
+	 */
 	public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
 
@@ -104,6 +108,7 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 	 * netty连接的建立
 	 * @param ctx
 	 */
+	@Override
 	public void channelRegistered(ChannelHandlerContext ctx) {
 		System.out.println("sessionCreated()... from "+ctx.channel().remoteAddress()+" nid:" + ctx.channel().id().asShortText());
 	}
@@ -115,6 +120,7 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 	 * @param body
 	 * @throws Exception
      */
+	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, SentBody body) throws Exception {
 		Channel ch = ctx.channel();
 		CIMSession cimSession =new  CIMSession(ch);
@@ -140,6 +146,7 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 	 * @param ctx
 	 * @throws Exception
      */
+	@Override
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
 		CIMSession cimSession =new  CIMSession(ctx.channel());
 		System.out.println("sessionClosed()... from "+ctx.channel().remoteAddress()+" nid:"+cimSession.getNid() +",isConnected:"+ctx.channel().isActive());
@@ -161,6 +168,7 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 	 * @param evt
 	 * @throws Exception
      */
+	@Override
 	public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
 		if (evt instanceof IdleStateEvent && ((IdleStateEvent) evt).state().equals(IdleState.WRITER_IDLE)) {
 			ctx.channel().attr(AttributeKey.valueOf(CIMConstant.HEARTBEAT_KEY)).set(System.currentTimeMillis());
@@ -190,6 +198,7 @@ public class CIMNioSocketAcceptor extends SimpleChannelInboundHandler<SentBody> 
 	 * @param ctx
 	 * @param cause
      */
+	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause){
 		System.out.println(" 客户端链接断开 "+ctx.channel().remoteAddress()+" isConnected:"+ctx.channel().isActive()+" nid:" +ctx.channel().id().asShortText());
 		ctx.channel().close();

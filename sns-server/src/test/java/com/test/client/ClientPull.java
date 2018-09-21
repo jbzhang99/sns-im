@@ -14,7 +14,6 @@ import java.net.UnknownHostException;
  *
  * Date  2018/1/15
  * Time  上午10:20
- * Author bingbing.wang@corp.elong.com
  */
 public class ClientPull {
 
